@@ -1,6 +1,11 @@
 var currentPlaylist = [];
+var shufflePlaylist = []; //new array variable
+var tempPlayList = [];
 var audioElement;
 var mouseDown = false;
+var currentIndex = 0; //firt song in the list
+var repeat = false; //as default false
+var shuffle = false;
 
 function formatTime(seconds) {
 	var time = Math.round(seconds); //total times
@@ -21,10 +26,21 @@ function updateTimeProgressBar(audio) {
 	$(".playbackBar .progress").css("width", progress + "%");
 }
 
+function updateVolumeProgressBar(audio) {
+	//to change the volumeBar
+	var volume = audio.volume * 100; //audio of the music is decimal number between 0 and 1
+	//to get the percentage we multiply it with 100, and if it was 0.9 then we know that its 90% 
+	$(".volumeBar .progress").css("width", volume + "%");
+}
+
 function Audio() {
 
 	this.currentlyPlaying;
-	this.audio = document.createElement('audio');
+	this.audio = document.createElement('audio'); //<audio> </audio>
+
+	this.audio.addEventListener("ended", function() {
+		nextSong(); //the function in the **nowPlayingBar.php**
+	});
 
 	//Whenever this event is started then this function will run
 	this.audio.addEventListener("canplay", function() {
@@ -42,14 +58,18 @@ function Audio() {
 		}
 	});
 
+	//New event handler to update volumeBar ----- volumeChange is pre-defined function for audio elements
+	this.audio.addEventListener("volumechange", function() {
+        updateVolumeProgressBar(this); //this refers to (current audio element)
+	});
+
 	this.setTrack = function(track) {
 		this.currentlyPlaying = track;
 		this.audio.src = track.path;
 	}
 
 	this.play = function() {
-		console.log("here");
-		this.audio.play();
+        this.audio.play();
 	}
 
 	this.pause = function() {

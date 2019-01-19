@@ -104,5 +104,15 @@ The Styled album page's css can be found in the - [Link](tutorials/AuthPages/Sty
 - [x] Updating The Progressbar as The Song Plays
 - [x] Dragging The Progress Bar On Click
 - [x] Controlling The Volume
+- [x] Updating the volume progress bar
+- [x] Preventing controls from highlighting on mouse drag
+- [x] Skipping to the next song
+- [x] Song Repeat Mode
+- [x] Repeat Button
+- [x] Playing the next song when current song end
+- [x] Previous Song Button
+- [x] Mute Button
+- [x] Shuffle Button
+- [x] Playing songs by clicking on the song's play button
 
 ** For Explanation - [Link](tutorials/tutorial15.md) **
