@@ -116,3 +116,15 @@ The Styled album page's css can be found in the - [Link](tutorials/AuthPages/Sty
 - [x] Playing songs by clicking on the song's play button
 
 ** For Explanation - [Link](tutorials/tutorial15.md) **
+
+## Seamless page transitions
+
+- [x] UserLoggedIn JavaScript variable
+- [x] Changes pages dynamically
+- [x] Knowing if a page was loaded from ajax or not
+- [x] Replacing all links with our dynamic links
+- [x] Small play button bug
+- [x] Changing the URL when we load a new page
+- [x] Browse page
+
+** For Explanation - [Link](tutorials/tutorial16.md) **

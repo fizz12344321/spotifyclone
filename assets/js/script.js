@@ -7,6 +7,31 @@ var currentIndex = 0; //firt song in the list
 var repeat = false; //as default false
 var shuffle = false;
 
+var userLoggedIn;
+
+function openPage(url) {
+
+	//If ? is missing in the url, it will cause problems
+	//because we need index.php?id.... that kind of things 
+	if(url.indexOf("?") == -1) {
+		url = url + "?";
+	}
+	console.log(url);
+	//encodeURI means it will convert any unknown character on the URL to known one which means www.spotify.me/index.php?user%20name;
+	//It automatically puts %20 for spaces or different values for different things
+	var encodedUrl = encodeURI(url +  "&userLoggedIn=" +  userLoggedIn);
+	console.log(encodedUrl);
+	$("#mainContent").load(encodedUrl);
+	$("body").scrollTop(0); //to make sure that the page is scrolled to the top of the page again
+	history.pushState(null, null, url); //Just puts the url of the page to the address bar
+
+
+	//Assume that you've clicked to the album 5 and url is looks like http://spotify.me/album.php?id=5
+	//Normally it goes to the **album.php** and shows it, but we want to show that page in the our main page
+	//So we have used $("#mainContent").load(encodedUrl) basically, it will get the page and put it to the
+	//container that we have created called mainContent in the **header.php**
+}
+
 function formatTime(seconds) {
 	var time = Math.round(seconds); //total times
 	var minutes = Math.floor(time / 60); //Rounds down and like 526 seconds to 5 minute

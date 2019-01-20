@@ -230,7 +230,7 @@
 
 		//Currently not work because as default we are sending false
 		if(play == true) {
-			audioElement.play();
+			playSong();
 		}
 	}
 
